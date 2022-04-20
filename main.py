@@ -9,8 +9,12 @@ url2 = 'https://sistemaswebb3-listados.b3.com.br/indexPage/theorical/IBOV?langua
 url3 = 'https://sistemaswebb3-listados.b3.com.br/indexPage/preview/IBOV?language=pt-br'
 
 
-lista1 = webScraping(url=url1)
+web1 = webScraping(url=url1)
 
-lista2 = webScraping(url=url2)
+we2b = webScraping(url=url2)
 
-lista3 = webScraping(url=url3)
+web3 = webScraping(url=url3)
+
+print(web1)
+print(we2b)
+print(web3)
