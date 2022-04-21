@@ -1,3 +1,4 @@
+from cgitb import html
 import pandas as pd
 from selenium import webdriver
 import time as t
@@ -5,7 +6,6 @@ from bs4 import BeautifulSoup
 
 
 class webScraping:
-
     def import_ibov_df(url):
         browser = webdriver.Chrome()
         browser.get(url)
@@ -19,15 +19,14 @@ class webScraping:
         setor, cod, acao, tipo, qtde_t, part, part_a = [], [], [], [], [], [], []
         linhas = bs.find_all()
         i = 0
-        print(linhas)
         while i < (len(linhas)):
             setor.append(linhas[i].text)
             cod.append(linhas[i+1].text)
             acao.append(linhas[i+2].text)
-            tipo.append(linhas[i+3].text)
-            qtde_t.append(linhas[i+4].text)
-            part.append(linhas[i+5].text)
-            part_a.append(linhas[i+6].text)
+            tipo.append(linhas[i+4].text)
+            qtde_t.append(linhas[i+5].text)
+            part.append(linhas[i+6].text)
+            part_a.append(linhas[i+7].text)
             i += 7
 
         df = pd.DataFrame({'Setor': setor[:-1],
