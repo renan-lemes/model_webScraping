@@ -11,10 +11,8 @@ url3 = 'https://sistemaswebb3-listados.b3.com.br/indexPage/preview/IBOV?language
 
 web1 = webScraping(url=url1)
 
-we2b = webScraping(url=url2)
+#web2 = webScraping(url=url2)
 
-web3 = webScraping(url=url3)
+#web3 = webScraping(url=url3)
 
 print(web1)
-print(we2b)
-print(web3)
