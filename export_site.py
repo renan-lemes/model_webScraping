@@ -4,7 +4,7 @@ from typing_extensions import Self
 import pandas as pd
 from selenium import webdriver
 import time as t
-from bs4 import BeautifulStoneSoup
+from bs4 import BeautifulSoup
 
 """ 
     como saber se euma ação é preferencial ou ordinaria
@@ -34,7 +34,7 @@ class import_advfn:
             t.sleep(3)
             html.browser.page_source
             browser.close()
-            bs = BeautifulStoneSoup(html, 'html.parser')
+            bs = BeautifulSoup(html, 'html.parser')
             linhas = bs.find_all('tr', attrs={'class': 'result'})
             j = 0
             data = []
@@ -67,17 +67,17 @@ class import_advfn:
             'Minima': Min,
             'Volume': Vol,
         })
-        df['Fechamento'] = df['Fechamento'].map(t: t.replace(",", "."))
-        df['Fechamento'] = df['Fechamento'].map(t: float(t))
-        df['Variacao'] = df['Variacao'].map(t: t.replace(",", "."))
-        df['Variacao'] = df['Variacao'].map(t: float(t))
-        df['Variacao_%'] = df['Variacao_%'].map(t: t.replace(",", "."))
-        df['Variacao_%'] = df['Variacao_%'].map(t: float(t))
-        df['Abertura'] = df['Abertura'].map(t: t.replace(",", "."))
-        df['Abertura'] = df['Abertura'].map(t: float(t))
-        df['Maxima'] = df['Maxima'].map(t: t.replace(",", "."))
-        df['Maxima'] = df['Maxima'].map(t: float(t))
-        df['Minima'] = df['Minima'].map(t: t.replace(",", "."))
-        df['Minima'] = df['Minima'].map(t: float(t))
-        df['Volume'] = df['Volume'].map(t: float(t))
+        df['Fechamento'] = df['Fechamento'].map(lambda t: t.replace(",", "."))
+        df['Fechamento'] = df['Fechamento'].map(lambda t: float(t))
+        df['Variacao'] = df['Variacao'].map(lambda t: t.replace(",", "."))
+        df['Variacao'] = df['Variacao'].map(lambda t: float(t))
+        df['Variacao_%'] = df['Variacao_%'].map(lambda t: t.replace(",", "."))
+        df['Variacao_%'] = df['Variacao_%'].map(lambda t: float(t))
+        df['Abertura'] = df['Abertura'].map(lambda t: t.replace(",", "."))
+        df['Abertura'] = df['Abertura'].map(lambda t: float(t))
+        df['Maxima'] = df['Maxima'].map(lambda t: t.replace(",", "."))
+        df['Maxima'] = df['Maxima'].map(lambda t: float(t))
+        df['Minima'] = df['Minima'].map(lambda t: t.replace(",", "."))
+        df['Minima'] = df['Minima'].map(lambda t: float(t))
+        df['Volume'] = df['Volume'].map(lambda t: float(t))
         df = df.to_csv(f'{self.acao}_{self.date_init}_{self.date_end}.csv')
