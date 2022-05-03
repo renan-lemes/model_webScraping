@@ -1,11 +1,7 @@
-from cgitb import html
-from dataclasses import replace
-from typing_extensions import Self
 import pandas as pd
 from selenium import webdriver
 import time as t
 from bs4 import BeautifulSoup
-
 """ 
     como saber se euma ação é preferencial ou ordinaria
     saber a data 
@@ -28,11 +24,11 @@ class import_advfn:
     def push_action(self):
 
         for i in range(21, 0, -1):
-            url = 'http://br.advfn.com/bolsa-de-valores/bovespa/{self.empresa}-{self.tipo}-{self.acao}/historico/mais-dados-historicos?current={i}&Date1={self.date_init}&Date2={self.date_end}'
-            browser = webdriver.get(url)
+            url = f'http://br.advfn.com/bolsa-de-valores/bovespa/{self.empresa}-{self.tipo}-{self.acao}/historico/mais-dados-historicos?current={i}&Date1={self.date_init}&Date2={self.date_end}'
+            browser = webdriver.Chrome(url)
             browser.get(url)
             t.sleep(3)
-            html.browser.page_source
+            html = browser.page_source
             browser.close()
             bs = BeautifulSoup(html, 'html.parser')
             linhas = bs.find_all('tr', attrs={'class': 'result'})
