@@ -2,11 +2,6 @@ import pandas as pd
 from selenium import webdriver
 import time as t
 from bs4 import BeautifulSoup
-""" 
-    como saber se euma ação é preferencial ou ordinaria
-    saber a data 
-    
-"""
 
 
 class import_advfn:
