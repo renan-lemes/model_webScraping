@@ -1,4 +1,3 @@
-from cgitb import html
 import pandas as pd
 from selenium import webdriver
 import time as t
